@@ -2,7 +2,7 @@
     .main-top {
         display: flex;
         justify-content: center;
-        background-image: url(xionmedlemmarclear.JPG);
+        background-image: url(xionmedlemmarclear.jpg);
         padding: 20%;
         background-position: center;
         background-size: cover;
@@ -43,7 +43,7 @@
     h1 {
         display: flex;
         justify-content:center;
-        background-image: url(xionmedlemmarclear.JPG);
+        background-image: url(xionmedlemmarclear.jpg);
         padding: 30vw;
         background-position: center;
         background-size: cover;
