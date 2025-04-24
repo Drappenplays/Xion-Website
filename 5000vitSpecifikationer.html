@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>5000krSvartDator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="index.js"></script>
+    <link href="styleindex.css" rel="stylesheet" />
+    <link href="StyleProduktsida.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="Back-Button" onclick="window.location.href='index.html'">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 23.9917L36 23.9917" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M24 36L12 24L24 12" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    </div>
+    <header>
+
+        <img id="logga" src="xion_logga_white.png" alt="Xion Computers Logo" onclick="hem()" /> <!--Logga för hemsidan högst upp-->
+    </header>
+
+
+    <main class="d-flex justify-content-center">
+        <form id="orderForm" action="klar_order.php" method="POST">
+            <!--Skapar ett formulär så användaren kan ändra allt.-->
+            <input type="hidden" name="cpu" value="AMD Ryzen 5 3600">
+            <input type="hidden" name="gpu" value="GeForce GTX 1660">
+            <input type="hidden" name="motherboard" value="MSI A520M">
+            <input type="hidden" name="psu" value="Corsair CX 550 watt">
+            <input type="hidden" name="cooler" value="Wraith Stealth Cooler">
+            <input type="hidden" id="total_price" name="total_price" value="5000"> <!--Skapar en gömd variabel "Price" som sedan ska ändras beroende på vad kunden väljer-->
+
+            <div>
+                <!--Skapar lådan för allt och lägger till bilden-->
+                <div class="main-header">
+                    <div class="main-header-left">
+                        <img src="vitbillig2.png" />
+                    </div>
+                    <div class="col-sm-2">
+                    </div>
+
+                    <!--Skriver ut alla delar som redan är valda (har ingen variabel och står bara som en text)-->
+                    <div class="main-header-right">
+                        <h1>Xion Core White</h1>
+                        <ul class="Komponentlist">
+                            <li>CPU: AMD Ryzen 5 3600</li>
+                            <li>GPU: GeForce GTX 1660</li>
+                            <li>Moderkort: MSI A520M</li>
+                            <li>RAM: Kingston Fury</li>
+                            <li>SSD: Kingston 500Gb</li>
+                            <li>PSU: Corsair CX 550 watt</li>
+                            <li>CPU-Kylare: Wraith Stealth Cooler</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!--Skriver ut valen till olika chassin som användaren kan ändra efter sin egna smak-->
+                <div class="main-body-inputs">
+                    <h2>Chassi</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>Vit 1</p><p class="dropdown-p">+0 kr</p></span> <!--Skriver ut texten och gör så att texten ändras när något väljs-->
+                            <input type="hidden" name="chassi" value="Vit 1"> <!--Startvärde är svart-->
+                            <div class="Chassiarrow"></div> <!--Skapar pilen för att göra lådan lite snyggare-->
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 0)"><img class="Chassibilddropdown" src="svartbillig.png" /> <p>Svart 1</p><p class="dropdown-p">+0 kr</p></div>
+
+
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 0)"><img class="Chassibilddropdown" src="vitbillig2.png" /><p>Vit 1</p><p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 0)"><img class="Chassibilddropdown" src="rosabillig2.png" /><p>Rosa 1</p> <p class="dropdown-p">+0 kr</p></div>
+
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 300)"><img class="Chassibilddropdown" src="svartdyr.png" /><p>Svart 2</p> <p class="dropdown-p">+300 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 300)"><img class="Chassibilddropdown" src="vitbillig.png" /><p>Vit 2</p> <p class="dropdown-p">+300 kr</p></div>
+
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 500)"><img class="Chassibilddropdown" src="svartdyr2.png" /><p>Svart 3</p> <p class="dropdown-p">+500 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 500)"><img class="Chassibilddropdown" src="vitdyr2.png" /><p>Vit 3</p> <p class="dropdown-p">+500 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 500)"><img class="Chassibilddropdown" src="rosabillig.png" /><p>Rosa 3</p> <p class="dropdown-p">+500 kr</p></div>
+
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 700)"><img class="Chassibilddropdown" src="svartdyr3.png" /><p>Svart 4</p> <p class="dropdown-p">+700 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 700)"><img class="Chassibilddropdown" src="vitdyr3.png" /><p>Vit 4</p> <p class="dropdown-p">+700 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'chassi', 700)"><img class="Chassibilddropdown" src="rosadyr.png" /><p>Rosa 4</p> <p class="dropdown-p">+700 kr</p></div>
+
+                        </div>
+                    </div>
+
+
+                    <!--Skriver ut valen till olika RAM-minnen som användaren kan ändra efter sin egna smak-->
+                    <h2>RAM</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>16 GB</p> <p class="dropdown-p">+0 kr</p></span>
+                            <input type="hidden" name="ram" value="16 GB">
+                            <div class="Chassiarrow"></div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'ram', 0)"><p>16 GB</p> <p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'ram', 400)"><p>32 GB</p> <p class="dropdown-p">+400 kr</p></div>
+                        </div>
+                    </div>
+
+
+                    <!--Skriver ut valen till olika SSD:n som användaren kan ändra efter sin egna smak-->
+                    <h2>SSD</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>500 Gb</p> <p class="dropdown-p">+0 kr</p></span>
+                            <input type="hidden" name="ssd" value="500 Gb">
+                            <div class="Chassiarrow"></div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'ssd', 0)"><p>500 GB</p> <p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'ssd', 200)"><p>1 TB</p> <p class="dropdown-p">+200 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'ssd', 900)"><p>2 TB</p> <p class="dropdown-p">+900 kr</p></div>
+                        </div>
+                    </div>
+
+
+
+                    <!--Skriver ut valen till olika färger som användaren kan ändra efter sin egna smak-->
+                    <h2>Insida Färg</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>Svart</p> <p class="dropdown-p">+0 kr</p></span>
+                            <input type="hidden" name="color" value="Svart">
+                            <div class="Chassiarrow"></div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'color', 0)"><p>Svart</p> <p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'color', 500)"><p>Vit</p> <p class="dropdown-p">+500 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'color', 500)"><p>Rosa</p> <p class="dropdown-p">+500 kr</p></div>
+                        </div>
+                    </div>
+
+
+
+                    <!--Skriver ut valen till olika typer av CPU-kylning som användaren kan ändra efter sin egna smak-->
+                    <h2>CPU-Kylning</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>Luft</p> <p class="dropdown-p">+0 kr</p></span>
+                            <input type="hidden" name="cooling" value="Luft">
+                            <div class="Chassiarrow"></div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'cooling', 0)"><p>Luft</p> <p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'cooling', 1100)"><p>AIO</p> <p class="dropdown-p">+1100 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'cooling', 8500)"><p>Custom vattenkylning</p> <p class="dropdown-p">+8500 kr</p></div>
+                        </div>
+                    </div>
+
+
+
+                    <!--Valet mellan om användaren vill ha WIFI eller inte-->
+                    <h2>WIFI</h2>
+                    <div class="dropdown-container">
+                        <div class="Chassibox" onclick="toggleDropdown(this)">
+                            <span class="selectedText"><p>Inte WIFI</p> <p class="dropdown-p">+0 kr</p></span>
+                            <input type="hidden" name="wifi" value="Inte WIFI">
+                            <div class="Chassiarrow"></div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectOption(this, 'wifi', 0)"><p>Inte WIFI</p> <p class="dropdown-p">+0 kr</p></div>
+                            <div class="dropdown-item" onclick="selectOption(this, 'wifi', 300)"><p>WIFI</p> <p class="dropdown-p">+300 kr</p></div>
+                        </div>
+                    </div>
+
+
+                    <!--Låter användaren skriva in sina egna val och låter användaren bara skriva in max 1000 bokstäver-->
+                    <h2>Andra önskemål</h2>
+                    <textarea name="thoughts" rows="4" cols="50" maxlength="1000" placeholder="Skriv dina tankar här..."></textarea>
+
+                    <br>
+                    <input class="confirm-button" type="submit" value="Gör Beställning">
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer id="kontakt">
+        <div class="footer-container">
+            <!-- Kolumn 1: Support -->
+            <div class="footer-column">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Vanliga frågor (FAQ)</a></li>
+                    <li><a href="#" class="footer-link">Leverans & Retur</a></li>
+                    <li><a href="#" class="footer-link">Allmänna Villkor</a></li>
+                    <li><a href="#" class="footer-link">Vår Byggprocess</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Kolumn 2: Kontakt -->
+            <div class="footer-column">
+                <h3 class="footer-title">Kontakt</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>xioncomputersuf@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-headset"></i>
+                        <span>xioncomputers.support@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+46 73-515 62 01</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Adress</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolumn 3: Företagsinfo -->
+            <div class="footer-column">
+                <h3 class="footer-title">Företaget</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Om Oss</a></li>
+                    <li><a href="#" class="footer-link">Vår Vision</a></li>
+                    <li><a href="https://ungforetagsamhet.se/company/xion-computers-uf" class="footer-link">Ung Företagsamhet</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Kolumn 4: Sociala medier & Nyhetsbrev -->
+            <div class="footer-column">
+                <h3 class="footer-title">Följ oss</h3>
+                <div class="social-media">
+                    <a href="https://www.tiktok.com/@xioncomputersuf" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/xioncomputers.uf/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@xioncomputers" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <div class="legal-links">
+            <a href="#">Integritetspolicy</a>
+            <a href="#">Användarvillkor</a>
+            <a href="#">Cookie-inställningar</a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Xion Computers UF. Alla rättigheter reserverade.
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+<script>
+    // En variabel för att hålla reda på prisändringar för olika valbara delar
+    let selectedOptions = {
+        chassi: 0,
+        ram: 0,
+        cooling: 0,
+        wifi: 0,
+        ssd: 0,
+        color: 0
+    };
+
+    let total_price = 5000; // Sätter grundpriset till 8000 kr
+
+    // Funktion för att visa och dölja dropdown-menyer
+    function toggleDropdown(element) {
+        const dropdown = element.nextElementSibling;
+        const isOpen = dropdown.style.display === "block";
+
+        // Stänger alla öppna dropdowns innan man öppnar en ny
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            menu.style.display = "none";
+            menu.previousElementSibling.classList.remove("open");
+        });
+
+        if (!isOpen) {
+            dropdown.style.display = "block";
+            element.classList.add("open");
+        }
+    }
+
+    // Funktion som hanterar när en användare väljer ett alternativ
+    function selectOption(optionElement, category, priceChange) {
+        const dropdown = optionElement.closest(".dropdown-menu");
+        const box = dropdown.previousElementSibling;
+        const textElement = box.querySelector(".selectedText"); // Text för valt alternativ
+        const hiddenInput = box.querySelector("input[type=hidden]"); // Dold input
+        const selectedText = optionElement.querySelector("p").textContent; // Hämta den valda texten (t.ex. "Svart")
+        const selectedPrice = optionElement.querySelector(".dropdown-p").textContent; // Hämta priset från <span>
+
+        // Uppdaterar texten så att priset visas bredvid alternativet
+        textElement.innerHTML = `${selectedText} <p class="selected-price">${selectedPrice}</p>`;
+        hiddenInput.value = selectedText.trim(); // Uppdatera input-värdet
+
+        // Justera prisändringarna
+        total_price -= selectedOptions[category]; // Ta bort gammal prisändring
+        selectedOptions[category] = priceChange; // Uppdatera med nya prisändringen
+        total_price += priceChange; // Lägg till nya prisändringen
+
+        document.getElementById("total_price").value = total_price; // Uppdatera det dolda prisfältet
+        updatePriceDisplay(); // Uppdatera prisvisningen
+
+        // Stäng dropdown-menyn efter val
+        dropdown.style.display = "none";
+        box.classList.remove("open");
+    }
+
+
+    // Uppdaterar prisvisningen på sidan
+    function updatePriceDisplay() {
+        let priceDisplay = document.getElementById("priceDisplay");
+
+        // Skapar en prisskylt om den inte redan finns
+        if (!priceDisplay) {
+            priceDisplay = document.createElement("h2");
+            priceDisplay.id = "priceDisplay";
+            document.querySelector(".main-header-right").appendChild(priceDisplay);
+        }
+
+        // Uppdaterar prisskylten med det nya totalpriset
+        priceDisplay.innerText = `Pris: ${total_price} kr`;
+    }
+
+    // Stänger alla dropdowns om användaren klickar utanför dem
+    document.addEventListener("click", function (event) {
+        document.querySelectorAll(".dropdown-container").forEach(container => {
+            if (!container.contains(event.target)) {
+                container.querySelector(".dropdown-menu").style.display = "none";
+                container.querySelector(".Chassibox").classList.remove("open");
+            }
+        });
+    });
+
+    updatePriceDisplay(); // Ser till att priset visas korrekt vid sidans start
+
+
+</script>

@@ -1,0 +1,779 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Xion Computers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="styleIndex.css" rel="stylesheet" /> <!--Min egna style för denna sida-->
+
+
+
+    <style>
+        /* Förstora pilarna */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-size: 100% 100%;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Lägg till en bakgrund så knapparna syns bättre */
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: rgba(0, 0, 0, 0.5); /* Halvtransparent svart bakgrund */
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%; /* Gör knappen rund */
+        }
+
+        /* Valfritt: lite marginal för att få luft från kanten */
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+
+        /* Om du vill ändra färgen på indikatorerna (prickarna) */
+        .carousel-indicators li {
+            background-color: #000; /* Svart färg på prickarna */
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .carousel-indicators .active {
+            background-color: #fff; /* Vit färg på aktiv prick */
+        }
+        .hidden-product {
+            display: none; /* Initially hidden */
+        }
+
+
+        @media screen and (max-width: 1000px) { /*För mobil*/
+            #iphone-se-färre {
+                display: none;
+            }
+
+            #iphone-se-fler {
+                display: block;
+            }
+
+            .pc-button-fler{
+                display:none;
+            }
+            .pc-button-färre{
+                display:none;
+            }
+            .hamburger-meny{
+                display:none;
+            }
+            
+        }
+
+        @media screen and (min-width: 1001px) { /*För pc*/
+            #pc-se-fler {
+                display: flex;
+            }
+
+            #pc-se-färre {
+                display: none;
+            }
+
+            #iphone-se-fler {
+                display: none;
+            }
+
+            #iphone-se-färre {
+                display: none;
+            }
+
+            .iphone-button {
+                display: none;
+            }
+
+            #iphone-button {
+                display: none;
+            }
+            .hamburger-meny{
+                display:none;
+            }
+        }
+    </style>
+    <script>
+        function scrollToSection(id) { /*Här är scriptet för att scrolla till olika titlar*/
+            let element = document.getElementById(id);
+
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+            const menu = document.getElementById('hamburger-meny');
+
+            menuHidden = true;
+            menu.style.display = 'none';
+        }
+        let productHidden = true; /* bestämmer om alla produkter är uppe eller inte*/
+
+        function hiddenProduct() {
+            if (window.innerWidth > 1000) { /* Kollar om skärmen är för pc */
+                if (productHidden == true) { //om produkterna inte syns
+                    let productHidden = false; //säg att de syns
+                    const hiddenProducts = document.getElementsByClassName('hidden-product');
+                    for (let i = 0; i < hiddenProducts.length; i++) {
+                        hiddenProducts[i].style.display = 'flex'; //visar produkterna
+                    }
+                }
+                const hiddenButton = document.getElementById('pc-se-färre');
+                hiddenButton.style.display = 'flex'; //visar knappen "se färre" för pc
+
+                const showButton = document.getElementById('pc-se-fler');
+                showButton.style.display = 'none'; //gömmer knappen "se fler" för pc
+            }
+            else { //Om skärmen är för mobil
+                if (productHidden == true) { //om produkterna inte syns
+                    let productHidden = false; //säg att de syns
+                    const hiddenProducts = document.getElementsByClassName('hidden-product');
+                    for (let i = 0; i < hiddenProducts.length; i++) {
+                        hiddenProducts[i].style.display = 'flex'; //Visar produkterna
+                    }
+                }
+                const hiddenButton = document.getElementById('iphone-se-färre');
+                hiddenButton.style.display = 'block'; //viasar knappen "se färre" för mobil
+
+                const showButton = document.getElementById('iphone-se-fler');
+                showButton.style.display = 'none'; //gömmer knappen "se fler" för mobil
+            }
+
+        }
+        function showProduct() { //gör samma sak, fast den gömmer alla produkter, visar knappen "se fler" och gömmer knappen "se färre"
+
+            if (window.innerWidth < 1000) {
+                if (productHidden == true) {
+                    let productHidden = false;
+                    const hiddenProducts = document.getElementsByClassName('hidden-product');
+                    for (let i = 0; i < hiddenProducts.length; i++) {
+                        hiddenProducts[i].style.display = 'none';
+                    }
+                }
+                const hiddenButton = document.getElementById('iphone-se-färre');
+                hiddenButton.style.display = 'none';
+
+                const showButton = document.getElementById('iphone-se-fler');
+                showButton.style.display = 'block';
+            }
+            else {
+                if (productHidden == true) {
+                    let productHidden = false;
+                    const hiddenProducts = document.getElementsByClassName('hidden-product');
+                    for (let i = 0; i < hiddenProducts.length; i++) {
+                        hiddenProducts[i].style.display = 'none';
+                    }
+                }
+                const hiddenButton = document.getElementById('pc-se-färre');
+                hiddenButton.style.display = 'none';
+
+                const showButton = document.getElementById('pc-se-fler');
+                showButton.style.display = 'flex';
+            }
+
+        }
+        let menuHidden = true;
+
+        function showMenu() {
+            const menu = document.getElementById('hamburger-meny');
+
+            if (menuHidden) {
+                menuHidden = false;
+                menu.style.display = 'flex';
+            } else {
+                menuHidden = true;
+                menu.style.display = 'none';
+            }
+        }
+        function svart5000() {
+            window.location.href = "5000svartSpecifikationer.html";
+        }
+        function vit5000() {
+            window.location.href = "5000vitSpecifikationer.html";
+        }
+        function rosa5000() {
+            window.location.href = "5000rosaSpecifikationer.html";
+        }
+        function svart6000() {
+            window.location.href = "6000svartSpecifikationer.html";
+        }
+        function vit6000() {
+            window.location.href = "6000vitSpecifikationer.html";
+        }
+        function rosa6000() {
+            window.location.href = "6000rosaSpecifikationer.html";
+        }
+        function svart8000() {
+            window.location.href = "8000svartSpecifikationer.html";
+        }
+        function vit8000() {
+            window.location.href = "8000vitSpecifikationer.html";
+        }
+        function rosa8000() {
+            window.location.href = "8000rosaSpecifikationer.html";
+        }
+        function svart10000() {
+            window.location.href = "10000svartSpecifikationer.html";
+        }
+        function vit10000() {
+            window.location.href = "10000vitSpecifikationer.html";
+        }
+        function rosa10000() {
+            window.location.href = "10000rosaSpecifikationer.html";
+        }
+        function svart12000() {
+            window.location.href = "12000svartSpecifikationer.html";
+        }
+        function vit12000() {
+            window.location.href = "12000vitSpecifikationer.html";
+        }
+        function rosa12000() {
+            window.location.href = "12000rosaSpecifikationer.html";
+        }
+        function svart15000() {
+            window.location.href = "15000svartSpecifikationer.html";
+        }
+        function vit15000() {
+            window.location.href = "15000vitSpecifikationer.html";
+        }
+        function rosa15000() {
+            window.location.href = "15000rosaSpecifikationer.html";
+        }
+
+
+
+        document.addEventListener("click", function (event) {
+            document.querySelectorAll(".hamburger-button").forEach(container => {
+                if (!container.contains(event.target)) {
+                    container.querySelector(".hamburger-meny").style.display = "none";
+                    container.querySelector(".hamburger-button").classList.remove("open");
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <header>
+        <!--Headern med xion logga och hamburgermeny-->
+
+        <div class="hamburger" id="hamburger-button" onclick="showMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+
+        <img id="logga" src="xion_logga_white.png" alt="Xion Computers Logo" onclick="hem()" />
+
+
+        <div class="hamburger" id="hamburger-button" style="visibility:hidden;">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+    </header>
+    <div class="hamburger-meny" id="hamburger-meny">
+        <div class="hamburger-meny-body">
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('logga')">
+                    <h5>
+                        Hem
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('top-news-parent')">
+                    <h5>
+                        Nyheter
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('card-parent')">
+                    <h5>
+                        Produkter
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('vad-vi-gör')">
+                    <h5>
+                        Våran Vision
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('how-to-order')">
+                    <h5>
+                        Hur går det till?
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('om-oss')">
+                    <h5>
+                        Om oss
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button">
+                    <h5>
+                        Omröstningar
+                    </h5>
+                </button>
+            </div>
+            <div>
+                <button class="hamburger-meny-button" onclick="scrollToSection('kontakt')">
+                    <h5>
+                        Kontakta oss
+                    </h5>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="navigation-bar-for-pc">
+        <button class="navigation-bar-button" onclick="window.location.href='index.html';">
+            Hem
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('top-news-parent')">
+            Nyheter
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('card-parent')">
+            Produkter
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('vad-vi-gör')">
+            Våran vision
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('how-to-order')">
+            Hur går det till?
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('om-oss')">
+            Om oss
+        </button>
+        <button class="navigation-bar-button" onclick="window.location.href='index.html';">
+            Omröstningar
+        </button>
+        <button class="navigation-bar-button" onclick="scrollToSection('kontakt')">
+            Kontakta oss
+        </button>
+
+    </div>
+    <div class="top-info" id="top-info">
+        <div>
+            <p style="text-align:center;">
+                VIKTIGT! Vi kan inte ta emot beställningar för tillfället pga problem med databaser. Ta gärna en titt
+                på våra datorer så ska vi lösa detta så fort vi kan! :(
+            </p>
+        </div>
+    </div>
+    <div class="top-info" id="top-info">
+        <div>
+            <p style="text-align:center;">
+                VIKTIGT! Vissa fuktioner på hemsidan fungerar inte just nu, men vi jobbar hårt med att fixa det :(
+            </p>
+        </div>
+    </div>
+    <div id="top-news-parent">
+        <!--Här är karusellen med nyheterna-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="nyhetTest1.png" alt="First slide"> <!--Nyhet 1-->
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="nyhetTest2.png" alt="Second slide"> <!--Nyhet 2-->
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="nyhetTest3.png" alt="Third slide"> <!--Nyhet 3-->
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <main>
+        <!--Allt content på sidan. Själva bodyn-->
+        <div class="card-parent" id="card-parent">
+            <div class="d-flex justify-content-center row">
+                <div class="card m-5" onclick="svart5000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartbillig.png" style="width:100%" onclick="svart5000()" />
+                    <div class="card-body">
+                        <h2>Xion Core Black</h2>
+                        <h3>5 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div class="card  m-5" onclick="vit5000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitbillig.png" style="width:100%" onclick="vit5000()" />
+                    <div class="card-body">
+                        <h2>Xion Core White</h2>
+                        <h3>5 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div class="card  m-5" onclick="rosa5000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosabillig2.png" style="width:100%" onclick="rosa5000()" />
+                    <div class="card-body">
+                        <h2>Xion Core Pink</h2>
+                        <h3>5 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="svart6000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartbillig.png" style="width:100%" onclick="svart6000()" />
+                    <div class="card-body">
+                        <h2>Xion Spark Black</h2>
+                        <h3>6 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="vit6000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitbillig.png" style="width:100%" onclick="vit6000()" />
+                    <div class="card-body">
+                        <h2>Xion Spark White</h2>
+                        <h3>6 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="rosa6000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosabillig2.png" style="width:100%" onclick="rosa6000()" />
+                    <div class="card-body">
+                        <h2>Xion Spark Pink</h2>
+                        <h3>6 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+
+                <div id="hidden-product" class="hidden-product card m-5" onclick="svart8000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartdyr.png" style="width:100%" onclick="svart8000()" />
+                    <div class="card-body">
+                        <h2>Xion Pulse Black</h2>
+                        <h3>8 000kr</h3>
+                        <a href="8000svartSpecifikationer.html" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="vit8000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitbillig.png" style="width:90%" onclick="vit8000()" />
+                    <div class="card-body">
+                        <h2>Xion Pulse White</h2>
+                        <h3>8 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="rosa8000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosabillig.png" style="width:90%" onclick="rosa8000()" />
+                    <div class="card-body">
+                        <h2>Xion Pulse Pink</h2>
+                        <h3>8 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="svart10000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartdyr.png" style="width:100%" onclick="svart10000()" />
+                    <div class="card-body">
+                        <h2>Xion Nova Black</h2>
+                        <h3>10 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="vit10000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitdyr2.png" style="width:90%" onclick="vit10000()" />
+                    <div class="card-body">
+                        <h2>Xion Nova White</h2>
+                        <h3>10 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="rosa10000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosabillig.png" style="width:90%" onclick="rosa10000()" />
+                    <div class="card-body">
+                        <h2>Xion Nova Pink</h2>
+                        <h3>10 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="svart12000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartdyr2.png" style="width:100%" onclick="svart12000()" />
+                    <div class="card-body">
+                        <h2>Xion Vortex Black</h2>
+                        <h3>12 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="vit12000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitdyr2.png" style="width:80%" onclick="vit12000()" />
+                    <div class="card-body">
+                        <h2>Xion Vortex White</h2>
+                        <h3>12 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="rosa12000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosadyr.png" style="width:90%" onclick="rosa12000()" />
+                    <div class="card-body">
+                        <h2>Xion Vortex Pink</h2>
+                        <h3>12 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="svart15000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="svartdyr3.png" style="width:100%" onclick="svart15000()" />
+                    <div class="card-body">
+                        <h2>Xion Titan Black</h2>
+                        <h3>15 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="vit15000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="vitdyr3.png" style="width:80%" onclick="vit15000()" />
+                    <div class="card-body">
+                        <h2>Xion Titan White</h2>
+                        <h3>15 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+                <div id="hidden-product" class="hidden-product card m-5" onclick="rosa15000()">
+                    <!--Card för produkt-->
+                    <img class="card-img-top my-2" src="rosadyr.png" style="width:90%" onclick="rosa15000()" />
+                    <div class="card-body">
+                        <h2>Xion Titan Pink</h2>
+                        <h3>15 000kr</h3>
+                        <a href="#" class="btn product_button">Välj specifikationer</a>
+                    </div>
+                </div>
+
+                <div class="iphone-button card m-5" style="width:400px;" id="iphone-se-fler">
+                    <!--Knapp för att visa fler på mobil-->
+                    <div class="iphone-button">
+                        <button id="iphone-button" style="width:100%; height:100%;" onclick="hiddenProduct()">Se fler</button>
+                    </div>
+                </div>
+                <div class="iphone-button card m-5" style="width:400px;" id="iphone-se-färre">
+                    <!--Knapp för att visa färre på mobil-->
+                    <div class="iphone-button">
+                        <button id="iphone-button" style="width:100%; height:100%;" onclick="showProduct()">Se färre</button>
+                    </div>
+                </div>
+
+
+                <div id="pc-se-fler" class="pc-button-fler">
+                    <button id="pc-button" onclick="hiddenProduct()">Se fler</button> <!--Knapp för att visa fler på pc-->
+                </div>
+                <div id="pc-se-färre" class="pc-button-färre">
+                    <button id="pc-button" onclick="showProduct()">Se färre</button> <!--Knapp för att visa färre på pc-->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="vad-vi-gör" class="d-flex justify-content-center">
+            <div class="text-center col-sm-8">
+                <a href="våran-vision.html" style="font-size:50px; color:white;">Våran vision</a>
+                <p id="om-oss-p">
+                    Vi på Xion Computers UF vill göra gaming mer tillgängligt för alla genom att erbjuda gamingdatorer för ett billigare pris för fler.
+                    I dagens ekonomi kan det vara svårt att ha råd med an gamingdator, vare sig det är till sina barn som vill börja spela datorspel, men
+                    också för oss som inte vill betala upp mot 25 tusen kronor för en gamingdator. Våran vision är att ha billigare alternativ till
+                    nya gamingdatorer och istället normalisera att använda sig av renoverade gamingkomponenter som ändå inte används.
+                </p>
+                <p id="om-oss-p-2">
+                    Vi på Xion Computers UF vill att alla ska ha råd med sin egna gamingdator, även i denna ekonomi.
+                    Vi vill hjälpa alla som har svårt att ha råd med gamingdatorer genom att renovera begagnade datorkomponenter.
+                    På det sättet kan vi rädda båda miljön och plånboken!
+                </p>
+            </div>
+        </div>
+        <div id="how-to-order" class="how-to-order">
+            <div class="how-to-item">
+                <svg class="icon" viewBox="0 -2 1028 1028" fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M91.448447 896c-50.086957 0-91.428571-40.546584-91.428571-91.428571V91.428571C0.019876 41.341615 40.56646 0 91.448447 0h671.006211c50.086957 0 91.428571 40.546584 91.428572 91.428571v337.093168l-3.180124-0.795031c-13.515528-3.975155-26.236025-5.565217-40.546584-5.565217h-0.795031l-0.795031-2.385093h-2.385094V91.428571c0-23.055901-20.670807-43.726708-43.726708-43.726708H91.448447c-23.055901 0-43.726708 20.670807-43.726708 43.726708v713.142858c0 23.055901 20.670807 43.726708 43.726708 43.726708h352.198758l0.795031 0.795031c8.745342 11.925466 3.975155 20.670807 0.795031 27.031056-3.180124 5.565217-4.770186 9.540373 0.795031 15.10559l4.770186 4.770186H91.448447z" fill=""></path><path d="M143.125466 174.906832c-8.745342 0-15.900621-11.130435-15.900621-24.645962 0-13.515528 7.15528-24.645963 15.900621-24.645963h270.310559c8.745342 0 15.900621 11.130435 15.900621 24.645963 0 13.515528-7.15528 24.645963-15.900621 24.645962h-270.310559z" fill=""></path><path d="M413.436025 128h-270.310559c-7.15528 0-13.515528 9.540373-13.515528 22.26087s6.360248 22.26087 13.515528 22.260869h270.310559c7.15528 0 13.515528-9.540373 13.515528-22.260869s-5.565217-22.26087-13.515528-22.26087zM139.945342 302.111801c-7.15528 0-12.720497-10.335404-12.720497-24.645962s5.565217-24.645963 12.720497-24.645963h193.987577c7.15528 0 12.720497 10.335404 12.720497 24.645963s-5.565217 24.645963-12.720497 24.645962H139.945342z" fill=""></path><path d="M333.932919 255.204969H139.945342c-5.565217 0-9.540373 9.540373-9.540373 22.26087s3.975155 22.26087 9.540373 22.260869h193.987577c5.565217 0 9.540373-9.540373 9.540373-22.260869s-4.770186-22.26087-9.540373-22.26087zM734.628571 1024c-27.826087 0-58.037267-1.590062-96.993788-4.770186-56.447205-4.770186-108.124224-31.006211-158.211181-79.503106L253.634783 718.708075c-52.47205-50.881988-54.857143-117.664596-7.950311-168.546584 19.875776-20.670807 50.881988-33.391304 84.273292-33.391305 33.391304 0 63.602484 12.720497 82.68323 34.981367 0.795031 0.795031 2.385093 2.385093 5.565217 3.975155 0.795031 0.795031 2.385093 1.590062 3.180124 2.385093V451.57764v-52.47205c0-40.546584 0-81.888199 0.795031-122.434783 0.795031-60.42236 47.701863-106.534161 109.714286-106.534161h0.795031c59.627329 0 104.944099 43.726708 108.124224 103.354037 0.795031 13.515528 0.795031 27.826087 0 42.136646v18.285714h11.925466c41.341615 0 73.142857 14.310559 96.198757 44.52174 0.795031 1.590062 5.565217 3.180124 11.925466 3.180124 2.385093 0 4.770186 0 6.360249-0.795031 7.15528-0.795031 14.310559-1.590062 20.670807-1.590062 31.801242 0 59.627329 12.720497 83.478261 38.956521 3.975155 3.975155 12.720497 7.15528 20.670807 7.15528h3.180125c5.565217-0.795031 11.925466-1.590062 17.490683-1.590062 59.627329 0 107.329193 42.136646 108.124224 96.993789 2.385093 100.968944 3.975155 200.347826-7.15528 298.931677-13.515528 119.254658-77.118012 182.857143-201.142857 198.757764-23.055901 3.975155-49.291925 5.565217-77.913044 5.565217zM325.982609 562.086957c-16.695652 0-32.596273 6.360248-44.521739 17.490683-14.310559 14.310559-22.26087 31.006211-22.26087 49.291925 0 19.080745 8.745342 38.161491 24.645963 54.062112l30.21118 30.21118c65.987578 65.192547 134.360248 131.975155 202.732919 197.962733 33.391304 31.801242 71.552795 52.47205 113.689441 60.42236 32.596273 6.360248 65.192547 9.540373 96.993789 9.540373 28.621118 0 57.242236-2.385093 85.068323-7.950311 100.968944-18.285714 147.080745-66.782609 156.621118-160.596273 8.745342-89.838509 7.950311-182.062112 6.360248-271.10559v-14.310559c-0.795031-32.596273-23.850932-54.857143-56.447205-54.857143-8.745342 0-16.695652 1.590062-25.440993 4.770187V601.043478c0 11.130435 0 32.596273-22.26087 32.596274h-0.795031c-7.15528 0-12.720497-1.590062-15.900621-5.565218-6.360248-6.360248-7.15528-18.285714-7.15528-27.826087v-4.770186c0-36.571429 0.795031-73.937888 0-111.304348-0.795031-32.596273-23.850932-55.652174-55.652174-55.652174-7.950311 0-15.900621 1.590062-23.0559 3.975155v128.795031c0 11.130435-2.385093 19.875776-7.950311 25.440994-3.975155 3.975155-9.540373 6.360248-16.695652 6.360249h-0.795031c-21.465839-0.795031-21.465839-23.055901-21.465838-31.006211v-52.47205-66.782609c0-15.10559-6.360248-31.006211-18.285715-42.931677-11.130435-11.130435-26.236025-17.490683-41.341615-17.490683-6.360248 0-13.515528 0.795031-19.875776 3.180124V442.832298c0 27.031056 0 55.652174-1.590062 83.478261-0.795031 7.15528-7.15528 12.720497-13.515528 18.285714-2.385093 2.385093-5.565217 4.770186-7.950311 7.15528l-2.385093 2.385093-1.590062-3.975155c-1.590062-2.385093-3.975155-4.770186-6.360248-6.360249-4.770186-5.565217-10.335404-11.130435-13.515528-17.490683-2.385093-4.770186-1.590062-10.335404-1.590062-15.10559v-6.360249-69.167701c0-50.881988 0-103.354037-0.795032-155.031056 0-38.161491-24.645963-63.602484-60.42236-64.397516-38.956522 0-65.192547 27.826087-65.192546 68.372671v374.459627l-10.335404 6.360249-0.795031-1.590062c-7.15528-7.950311-15.10559-15.900621-22.26087-23.850932-16.695652-17.490683-34.186335-36.571429-51.677018-54.062112-15.900621-15.10559-35.776398-23.850932-56.447205-23.850931z" fill=""></path></g></svg>
+                <h1>Beställning</h1>
+                <p class="text-pc" style="width:400px; text-align:center;">
+                    Du väljer den budgeten du vill ha. Sen väljer du alla specifikationer och skickar beställningen till oss.
+                    Du betalar i förviäg, så att vi kan beställa in alla dina delar!
+                </p>
+                <p class="text-iphone">
+                    Du gör en beställning, vi accpeterar och du skickar pengarna. Sedan köper vi in och renoverar delarna.
+                </p>
+            </div>
+            <div class="how-to-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.5672 9.91603L3.68064 17.8026C2.65578 18.8275 2.45813 20.2915 3.23918 21.0725C4.02023 21.8535 5.48421 21.6559 6.50906 20.631L14.3956 12.7445" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M18.1588 3.32443L15.2376 6.24562C14.9168 6.56645 15.5113 7.23834 16.2923 8.01938C17.0734 8.80043 17.7452 9.39487 18.0661 9.07404L20.9873 6.15285" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M18.1474 3.33589C17.6014 3.13128 17.0102 3.01938 16.3928 3.01938C13.6314 3.01938 11.3928 5.25796 11.3928 8.01938C11.3928 8.63676 11.5047 9.22801 11.7093 9.77394M21.0763 6.26483C21.2809 6.81076 21.3928 7.40201 21.3928 8.01938C21.3928 10.7808 19.1542 13.0194 16.3928 13.0194C15.7754 13.0194 15.1842 12.9075 14.6382 12.7029" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <h1>Bygget</h1>
+                <p class="text-pc" style="width:400px; text-align:center;">
+                    Vi tar emot delarna och plockar isär, tvättar och sätter ihop alla delar. Sedan bygger vi datorn och installerar operativsystemet.
+                </p>
+                <p class="text-iphone">
+                    Vi bygger ihop datorn åt dig!
+                </p>
+            </div>
+            <div class="how-to-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+
+                    </g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M20.5 7.27783L12 12.0001M12 12.0001L3.49997 7.27783M12 12.0001L12 21.5001M14 20.889L12.777 21.5684C12.4934 21.726 12.3516 21.8047 12.2015 21.8356C12.0685 21.863 11.9315 21.863 11.7986 21.8356C11.6484 21.8047 11.5066 21.726 11.223 21.5684L3.82297 17.4573C3.52346 17.2909 3.37368 17.2077 3.26463 17.0893C3.16816 16.9847 3.09515 16.8606 3.05048 16.7254C3 16.5726 3 16.4013 3 16.0586V7.94153C3 7.59889 3 7.42757 3.05048 7.27477C3.09515 7.13959 3.16816 7.01551 3.26463 6.91082C3.37368 6.79248 3.52345 6.70928 3.82297 6.54288L11.223 2.43177C11.5066 2.27421 11.6484 2.19543 11.7986 2.16454C11.9315 2.13721 12.0685 2.13721 12.2015 2.16454C12.3516 2.19543 12.4934 2.27421 12.777 2.43177L20.177 6.54288C20.4766 6.70928 20.6263 6.79248 20.7354 6.91082C20.8318 7.01551 20.9049 7.13959 20.9495 7.27477C21 7.42757 21 7.59889 21 7.94153L21 12.5001M7.5 4.50008L16.5 9.50008M16 18.0001L18 20.0001L22 16.0001" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
+                    </g>
+                </svg>
+                <h1>Frakt</h1>
+                <p class="text-pc" style="width:400px; text-align:center;">
+                    Sedan packar vi datorn säkert med antistatisk bubbelplast och skickar datorn med dhl hem till dig! Sedan är det bara att packa upp, koppla in och börja spela!
+                </p>
+                <p class="text-iphone">
+                    Vi packar med antistatisk bubbelplast, och skicker till dig inom 3 veckor.
+                </p>
+            </div>
+
+        </div>
+        <div id="om-oss" class="d-flex justify-content-center">
+            <div id="om_oss_div_content" class="d-flex justify-content-center">
+                <div class="text-center col-sm-8">
+                    <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502.643 502.643" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M251.256,237.591c37.166,0,67.042-30.048,67.042-66.977c0.043-37.037-29.876-66.999-67.042-66.999 c-36.908,0-66.869,29.962-66.869,66.999C184.387,207.587,214.349,237.591,251.256,237.591z"></path> <path d="M305.032,248.506H197.653c-19.198,0-34.923,17.602-34.923,39.194v107.854c0,1.186,0.604,2.243,0.669,3.473h175.823 c0.129-1.229,0.626-2.286,0.626-3.473V287.7C339.912,266.108,324.187,248.506,305.032,248.506z"></path> <path d="M431.588,269.559c29.832,0,53.754-24.008,53.754-53.668s-23.922-53.711-53.754-53.711 c-29.617,0-53.582,24.051-53.582,53.711C377.942,245.53,401.972,269.559,431.588,269.559z"></path> <path d="M474.708,278.317h-86.046c-15.445,0-28.064,14.107-28.064,31.472v86.413c0,0.928,0.453,1.812,0.518,2.826h141.03 c0.065-1.014,0.496-1.898,0.496-2.826v-86.413C502.707,292.424,490.11,278.317,474.708,278.317z"></path> <path d="M71.011,269.559c29.789,0,53.733-24.008,53.733-53.668S100.8,162.18,71.011,162.18c-29.638,0-53.603,24.051-53.603,53.711 S41.373,269.559,71.011,269.559L71.011,269.559z"></path> <path d="M114.109,278.317H27.977C12.576,278.317,0,292.424,0,309.789v86.413c0,0.928,0.453,1.812,0.539,2.826h141.03 c0.065-1.014,0.475-1.898,0.475-2.826v-86.413C142.087,292.424,129.489,278.317,114.109,278.317z"></path> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </g> </g></svg>
+                    <h1 id="om-oss-h1">Om oss</h1>
+                    <p id="om-oss-p">
+                        Vi är fyra killar som insåg att priserna för gamingdatorer nu för tiden är alldeles för höga.
+                        Miljön och ekonomi är två saker som sällan går ihop. Många företag höjer priserna eftersom de
+                        "använder sig av mijövänliga alternativ". Vårat företag använder sig av begagnade delar och
+                        sänker därefter priserna, eftersom vi tycker att det är det rätta.
+
+                    </p>
+                    <p id="om-oss-p-iphone">
+                        Vi är fyra killar som tyckte att gamingdatorers pris inte är anpassade till föräldrar som vill köpa en
+                        enkel dator till sitt barn. Dessutom så tycker vi prestandan på alla datorer är aldeles för låg för
+                        priset.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+    <footer id="kontakt">
+        <div class="footer-container">
+            <!-- Kolumn 1: Support -->
+            <div class="footer-column">
+                <h3 class="footer-title">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Vanliga frågor (FAQ)</a></li>
+                    <li><a href="#" class="footer-link">Leverans & Retur</a></li>
+                    <li><a href="#" class="footer-link">Allmänna Villkor</a></li>
+                    <li><a href="#" class="footer-link">Vår Byggprocess</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Kolumn 2: Kontakt -->
+            <div class="footer-column">
+                <h3 class="footer-title">Kontakt</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>xioncomputersuf@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-headset"></i>
+                        <span>xioncomputers.support@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+46 73-515 62 01</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Adress</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolumn 3: Företagsinfo -->
+            <div class="footer-column">
+                <h3 class="footer-title">Företaget</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Om Oss</a></li>
+                    <li><a href="#" class="footer-link">Vår Vision</a></li>
+                    <li><a href="https://ungforetagsamhet.se/company/xion-computers-uf" class="footer-link">Ung Företagsamhet</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Kolumn 4: Sociala medier & Nyhetsbrev -->
+            <div class="footer-column">
+                <h3 class="footer-title">Följ oss</h3>
+                <div class="social-media">
+                    <a href="https://www.tiktok.com/@xioncomputersuf" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/xioncomputers.uf/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@xioncomputers" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <div class="legal-links">
+            <a href="#">Integritetspolicy</a>
+            <a href="#">Användarvillkor</a>
+            <a href="#">Cookie-inställningar</a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Xion Computers UF. Alla rättigheter reserverade.
+        </div>
+    </div>
+</body>
+</html>

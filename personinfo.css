@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.skickaknapp {
+    background-color: purple;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 7px 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-block: 20px;
+}
+
+.form-container {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    color:white;
+}
+
+    .form-container h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+    .form-group label {
+        font-size: 16px;
+        color: #ddd;
+    }
+
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+    .form-control:focus, .form-select:focus {
+        outline: none;
+        border: 2px solid #4caf50;
+    }
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #4caf50;
+    color: white;
+    margin-top: 15px;
+}
+
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+
+.close-icon {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+

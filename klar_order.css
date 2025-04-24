@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Tillåter innehåll att växa */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Tillåter sidan att bli längre om det behövs */
+    overflow-y: auto; /* Möjliggör vertikal skrollning */
+    padding: 20px; /* Lägger till utrymme runt kanterna */
+}
+
+.confirmation-box {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    max-width: 90%; /* För att undvika att det blir för brett på små skärmar */
+}
+
+
+    .confirmation-box h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #4caf50;
+    }
+
+.order-details {
+    text-align: left;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    font-size: 16px;
+
+}
+
+    .order-details p {
+        margin: 5px 0;
+    }
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirm-button, .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.confirm-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+    .confirm-button:hover {
+        background-color: #45a049;
+    }
+
+.cancel-button {
+    background-color: #d9534f;
+    color: white;
+}
+
+    .cancel-button:hover {
+        background-color: #c9302c;
+    }
