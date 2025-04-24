@@ -1,0 +1,378 @@
+﻿.Back-Button {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    width: 5vw;
+    height: 5vw;
+}
+
+
+p {
+    margin-bottom: 0;
+}
+
+.Chassibox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20vw;
+    height: 4vw;
+    border: 3px solid purple;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #252525;
+    color: white;
+    border-radius: 7px;
+}
+
+.selectedText {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height:100%;
+    align-items:center;
+}
+.selected-price {
+    font-weight: bold;
+    margin-left: 8px;
+    color: grey;
+    margin-right:5%;
+}
+
+.main-body-inputs {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+
+span {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    height:40px;
+    
+}
+
+body {
+    width: 100%;
+}
+
+.Chassiarrow {
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.Chassibox.open .Chassiarrow {
+    transform: rotate(225deg);
+}
+
+.dropdown-menu {
+    display: none;
+    width: 400px;
+    border: 3px solid purple;
+    background-color: #252525;
+    position: absolute;
+    margin-top: 5px;
+    position: initial;
+    z-index: 100;
+    color: white;
+    margin-bottom: 20px;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 3px solid purple;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-item:hover {
+        background-color: #404040;
+        color: white;
+    }
+
+.Chassibilddropdown {
+    width: 200px;
+    border: none;
+    background-color: white;
+    margin-left: 10px;
+}
+
+.dropdown-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+main {
+    padding-bottom: 7vw;
+}
+
+.Komponentlist {
+    font-size: 1.5vw;
+}
+
+.confirm-button {
+    background-color: purple;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-block: 20px;
+}
+
+    .confirm-button:hover {
+        transform: scale(1.05);
+    }
+
+    .confirm-button:active {
+        transform: scale(0.95);
+    }
+
+.dropdown-p {
+    color: gray;
+    margin-right:1vw;
+    font-weight: bold;
+}
+
+main {
+    background-color: #303030;
+}
+
+.specifications-parent {
+}
+
+.thoughts-text-area {
+    font-size: 20px;
+}
+
+textarea {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    background-color: #252525;
+    color: white;
+    border: solid 3px purple;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.Komponentlist {
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    border: solid purple 3px;
+}
+
+@media screen and (min-width: 1001px) { /* För Datorskärmar */
+    body {
+        width: 100%;
+    }
+
+    form {
+        width: 80%;
+    }
+
+    .main-header img {
+        max-width: 300px;
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-body-inputs {
+        max-width: 50%;
+        display: flex;
+        justify-content: left;
+    }
+
+
+
+}
+
+@media screen and (max-width: 1000px) { /* För Iphones */
+    body {
+        width: 100%;
+    }
+
+    .Back-Button {
+        position: fixed;
+        top: 10vw;
+        left: 2vw;
+        font-size: 15px;
+        color: white;
+        cursor: pointer;
+        z-index: 9999;
+        width: 15vw;
+        height: 15vw;
+
+    }
+
+
+
+    .main-header {
+        display: block;
+        border: none;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .confirm-button {
+        display: flex;
+        justify-self: center;
+        padding-block: 40px;
+        padding-inline: 50px;
+        font-size: 50px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    li {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 50px;
+        text-align: center;
+        margin-block: 5vw;
+    }
+
+    h1 {
+        font-size: 80px;
+        margin-block: 5vw;
+    }
+
+    .dropdown-container {
+        display: block;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .balls {
+        display: flex;
+        justify-content: center;
+    }
+
+    textarea {
+        display: flex;
+        justify-self: center;
+    }
+
+    .Chassibox {
+    }
+
+    .Chassibox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 7px solid purple;
+        padding-block: 5vw;
+        padding-inline: 3vw;
+        font-family: Arial, sans-serif;
+        font-size: 40px;
+        cursor: pointer;
+        background-color: #252525;
+        color: white;
+        border-radius: 7px;
+        width: 90%;
+        margin-top: 5vw;
+        margin-bottom: 0;
+        text-align:center;
+        justify-self:center;
+    }
+
+    .Chassiarrow {
+        width: 40px;
+        height: 40px;
+        border-right: 5px solid white;
+        border-bottom: 5px solid white;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-menu {
+        display: none;
+        width: 90%;
+        border: 7px solid purple;
+        background-color: #252525;
+        position: absolute;
+        margin-top: 0;
+        position: initial;
+        z-index: 100;
+        color: white;
+        margin-bottom: 20px;
+        padding: 0;
+        justify-content: space-around;
+        justify-self:center;
+    }
+
+        .dropdown-menu img {
+            height: 50vw;
+            width: auto;
+        }
+
+    .dropdown-item {
+        padding: 20px;
+        cursor: pointer;
+        border-bottom: 3px solid purple;
+        font-size: 50px;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: left;
+    }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #404040;
+            color: white;
+        }
+
+        .dropdown-item p {
+            text-align: center;
+        }
+
+    footer p {
+        font-size: 20px;
+    }
+
+    footer h3 {
+        font-size: 30px;
+    }
+
+    textarea {
+        font-size: 40px;
+        width: 80%;
+    }
+    
+}

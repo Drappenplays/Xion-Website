@@ -1,0 +1,59 @@
+﻿@media screen and (min-width: 1001px){ /*För pc*/
+    .main-top {
+        display: flex;
+        justify-content: center;
+        background-image: url(XionMedlemmarClear.jpg);
+        padding: 20%;
+        background-position: center;
+        background-size: cover;
+    }
+    .vision-div{
+        text-align:center;
+        padding-inline:400px;
+        padding-block:200px;
+        font-size:25px;
+    }
+    h1 {
+        font-size: 100px;
+    }
+    .main-body{
+        display:block;
+        text-align:center;
+    }
+    .main-body-parent{
+        display:flex;
+        justify-content:center;
+    }
+    h2{
+        font-size:70px;
+        margin-block:40px;
+    }
+    #vision-div-1{
+        
+    }
+    #vision-div-2{
+        background-color:#909090;
+        color:black;
+    }
+    #vision-div-3{
+        background-color:#252525;
+    }
+}
+@media screen and (max-width: 1000px){ /*För Iphone*/
+    h1 {
+        display: flex;
+        justify-content:center;
+        background-image: url(XionMedlemmarClear.jpg);
+        padding: 30vw;
+        background-position: center;
+        background-size: cover;
+        text-align:center;
+        width:100%;
+    }
+    h1{
+        text-align:center;
+        font-size:180px;
+        width:100%
+    }
+   
+}
