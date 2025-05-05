@@ -46,13 +46,13 @@
         <button class="navigation-bar-button" onclick="window.location.href='index.html';">
             Hem
         </button>
-        <button class="navigation-bar-button">
+        <button class="navigation-bar-button" onclick="scrollToSection('pris');">
             Pris
         </button>
-        <button class="navigation-bar-button" onclick="window.location.href='index.html';">
+        <button class="navigation-bar-button" onclick="scrollToSection('miljö');">
             Miljö
         </button>
-        <button class="navigation-bar-button" onclick="window.location.href='index.html';">
+        <button class="navigation-bar-button" onclick="scrollToSection('vision-div-3');">
             Framtid
         </button>
     </div>
@@ -66,7 +66,7 @@
         <div class="main-body-parent">
             <div class="main-body">
                 <div class="vision-div " id="vision-div-1">
-                    <h2 class="vision-h2">Pris</h2>
+                    <h2 class="vision-h2" id="pris">Pris</h2>
                     <p class="vision-p">
                         Vi vill hålla priserna lägre än våra konkurenter, och det kommer vi alltid göra.
                         Eftersom vi anvönder oss av begagnade komponenter och renoverar de själva så kan
@@ -76,7 +76,7 @@
                     </p>
                 </div>
                 <div class="vision-div " id="vision-div-2">
-                    <h2 class="vision-h2">Miljö</h2>
+                    <h2 class="vision-h2" id="miljö">Miljö</h2>
                     <p class="vision-p">
                         Miljön spelar stor roll för oss på Xion Computers UF. Vi har både läst på och skrivit uppsatser
                         om hur miljön blir pååverkad av produktion av datorer och komponenter. Vi har då sett att återvinning
