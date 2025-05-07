@@ -1,0 +1,47 @@
+﻿@media screen and (min-width: 1001px){
+    .card {
+        background-color: green;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 100px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .card {
+        background-color: red;
+        justify-self:center;
+        margin-block:40px;
+    }
+    .cards{
+
+    }
+
+    .cardaprent {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-body {
+        display:block;
+    }
+    .main-body-parent {
+        display: flex;
+        justify-content: center;
+        text-align:center;
+    }
+    body{
+        font-size:40px;
+    }
+    h2{
+        font-size:100px;
+    }
+    h3{
+        font-size:80px;
+    }
+    .vision-div{
+        margin-block:200px;
+    }
+}
