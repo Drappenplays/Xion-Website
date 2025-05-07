@@ -1,6 +1,13 @@
-﻿@media screen and (min-width: 1001px){
+@media screen and (min-width: 1001px){
     .card {
         background-color: #202020;
+        border:none;
+    }
+    .card img{
+        height:250px;
+        width:250px;
+        background-position:center;
+        background-size:cover;
     }
 
     .cards {
@@ -8,11 +15,8 @@
         justify-content: space-around;
         margin-bottom: 100px;
     }
-     .card img{
-    height:250px;
-    width:250px;
-    background-position:center;
-    background-size:cover;
+    .card:hover{
+        border:none;
     }
 }
 @media screen and (max-width: 1000px) {
