@@ -8,6 +8,12 @@
         justify-content: space-around;
         margin-bottom: 100px;
     }
+     .card img{
+    height:250px;
+    width:250px;
+    background-position:center;
+    background-size:cover;
+    }
 }
 @media screen and (max-width: 1000px) {
     .card {
