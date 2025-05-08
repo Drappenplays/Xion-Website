@@ -1,66 +1,80 @@
-@media screen and (min-width: 1001px){
+
+@media screen and (min-width: 1001px) {
     .card {
         background-color: #202020;
-        border:none;
+        border: none;
         padding-block: 40px;
     }
-    .card img{
-        height:250px;
-        width:250px;
-        background-position:center;
-        background-size:cover;
-    }
+
+        .card img {
+            height: 250px;
+            width: 250px;
+            background-position: center;
+            background-size: cover;
+        }
 
     .cards {
         display: flex;
         justify-content: space-around;
         margin-bottom: 100px;
     }
-    .card:hover{
-        border:none;
+
+    .card:hover {
+        border: none;
     }
 }
+
 @media screen and (max-width: 1000px) {
     .card {
         background-color: #202020;
-        justify-self:center;
-        margin-block:40px;
+        justify-self: center;
+        margin-block: 40px;
+        padding-block:40px;
     }
-    .cards{
+
+    .cards {
         margin-bottom: 100px;
     }
-    .card img{
-        height:250px;
-        width:250px;
-        background-position:center;
-        background-size:cover;
+
+    .card img {
+        height: 250px;
+        width: 250px;
+        background-position: center;
+        background-size: cover;
     }
-    .card:hover{
-        border:none;
+
+    .card:hover {
+        border: none;
     }
+
     .cardaparent {
         display: flex;
         justify-content: center;
     }
 
     .main-body {
-        display:block;
+        display: block;
     }
+
     .main-body-parent {
         display: flex;
         justify-content: center;
-        text-align:center;
+        text-align: center;
     }
-    body{
-        font-size:40px;
+
+    body {
+        font-size: 30px;
     }
-    h2{
-        font-size:100px;
+
+    h2 {
+        font-size: 80px;
     }
-    h3{
-        font-size:80px;
+
+    h3 {
+        font-size: 50px;
     }
-    .vision-div{
-        margin-block:200px;
+
+    .vision-div {
+        margin-block: 200px;
     }
 }
