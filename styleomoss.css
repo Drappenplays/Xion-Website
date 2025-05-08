@@ -22,15 +22,23 @@
 }
 @media screen and (max-width: 1000px) {
     .card {
-        background-color: red;
+        background-color: #202020;
         justify-self:center;
         margin-block:40px;
     }
     .cards{
-
+        margin-bottom: 100px;
     }
-
-    .cardaprent {
+    .card img{
+        height:250px;
+        width:250px;
+        background-position:center;
+        background-size:cover;
+    }
+    .card:hover{
+        border:none;
+    }
+    .cardaparent {
         display: flex;
         justify-content: center;
     }
